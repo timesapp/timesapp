@@ -6,11 +6,11 @@ import CTA from "./components/CTA";
 
 export default function App() {
   return (
-    <main className="font-sans">
+    <div className="overflow-x-hidden bg-white text-black">
       <Hero />
       <ScrollText />
       <Features />
       <CTA />
-    </main>
+    </div>
   );
 }
