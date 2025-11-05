@@ -1,4 +1,4 @@
-// Wait 5 seconds, then fade out and redirect to index.html
+//  Wait 5 seconds, then fade out and redirect to index.html
 setTimeout(() => {
   document.querySelector('.loader-container').style.transition = 'opacity 1.5s ease';
   document.querySelector('.loader-container').style.opacity = '0';
