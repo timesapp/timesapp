@@ -1,0 +1,104 @@
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at center, #0b8f73 0%, #032d25 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Loader container */
+.loader-container {
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Clock SVG */
+.clock {
+  width: 160px;
+  height: 160px;
+  fill: none;
+  stroke: #00ffb3;
+  stroke-width: 4;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 10px rgba(0,255,150,0.6));
+  transform: scale(0);
+  animation: scaleUp 1s ease forwards;
+}
+
+.clock-ring {
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  animation: drawCircle 2s ease forwards 0.3s;
+}
+
+.hour-hand, .minute-hand {
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+
+.hour-hand {
+  animation: hourMove 5s linear infinite;
+}
+
+.minute-hand {
+  animation: minuteMove 2.5s linear infinite;
+}
+
+/* App name text */
+.app-name {
+  margin-top: 30px;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #00ffb3;
+  text-shadow: 0 0 20px rgba(0,255,150,0.6);
+  opacity: 0;
+  animation: textFade 5s ease-in-out forwards 2.5s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  to { transform: scale(1); }
+}
+
+@keyframes drawCircle {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes hourMove {
+  0% { transform: rotate(0deg); opacity: 1; }
+  100% { transform: rotate(360deg); opacity: 1; }
+}
+
+@keyframes minuteMove {
+  0% { transform: rotate(0deg); opacity: 1; }
+  100% { transform: rotate(720deg); opacity: 1; }
+}
+
+@keyframes textFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  30% { opacity: 1; transform: translateY(0); }
+  70% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .clock { width: 120px; height: 120px; }
+  .app-name { font-size: 1.8rem; }
+}
