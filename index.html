@@ -1,80 +1,226 @@
 <!DOCTYPE html>
-<div class="features__row features__row--reverse">
-<div class="feature__text" data-animate="slideInLeft">
-<h3 class="h3">Swiss Automatic</h3>
-<p>Precision-engineered movement for smooth, reliable performance.</p>
-</div>
-<figure class="feature img-parallax" data-speed="0.6">
-<img src="movement_detail.jpg" alt="Movement detail" loading="lazy" width="900" height="600" />
-</figure>
-</div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimesApp – Minimal & Smart</title>
+  <style>
+    /* ----- Base Style ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
+    /* ----- Header ----- */
+    header {
+      background: linear-gradient(135deg, #0b8f73, #0dd58e);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
 
-<div class="features__row">
-<figure class="feature img-parallax" data-speed="0.6">
-<img src="strap_texture.jpg" alt="Leather strap texture" loading="lazy" width="900" height="600" />
-</figure>
-<div class="feature__text" data-animate="slideInRight">
-<h3 class="h3">Premium Leather</h3>
-<p>Supple, durable strap that perfects the wrist feel and silhouette.</p>
-</div>
-</div>
-</div>
-</section>
+    header img {
+      width: 90px;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 8px rgba(0,255,150,0.6));
+    }
 
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+    }
 
-<!-- GALLERY -->
-<section id="gallery" class="section gallery" data-snap>
-<div class="container">
-<header class="section__header">
-<h2 class="h2" data-animate="fadeIn">A Statement of Style</h2>
-</header>
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
 
+    /* ----- Container ----- */
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
 
-<div class="grid" data-columns="3">
-<!-- Replace the src with your real images. All have hover zoom. -->
-<img src="gallery_1.jpg" alt="Watch lifestyle 1" loading="lazy" width="700" height="900" class="hover-zoom" />
-<img src="gallery_2.jpg" alt="Watch lifestyle 2" loading="lazy" width="700" height="900" class="hover-zoom" />
-<img src="gallery_3.jpg" alt="Watch lifestyle 3" loading="lazy" width="700" height="900" class="hover-zoom" />
-<img src="gallery_4.jpg" alt="Watch lifestyle 4" loading="lazy" width="700" height="900" class="hover-zoom" />
-<img src="gallery_5.jpg" alt="Watch lifestyle 5" loading="lazy" width="700" height="900" class="hover-zoom" />
-<img src="gallery_6.jpg" alt="Watch lifestyle 6" loading="lazy" width="700" height="900" class="hover-zoom" />
-</div>
-</div>
-</section>
+    /* ----- Accordion Style ----- */
+    .accordion-item {
+      background: #fff;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
 
+    .accordion-header {
+      cursor: pointer;
+      padding: 25px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #0b8f73;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-<!-- SPECS -->
-<section id="specs" class="section specs" data-snap>
-<div class="container">
-<header class="section__header">
-<h2 class="h2" data-animate="fadeIn">Specifications</h2>
-</header>
-<ul class="specs__list">
-<li data-animate="staggerItem">Case Diameter: 42mm</li>
-<li data-animate="staggerItem">Movement: Swiss Automatic</li>
-<li data-animate="staggerItem">Glass: Sapphire Crystal</li>
-<li data-animate="staggerItem">Water Resistance: 100m</li>
-<li data-animate="staggerItem">Strap: Premium Leather</li>
-</ul>
-</div>
-<!-- Subtle particles background -->
-<div class="particles" aria-hidden="true"></div>
-</section>
+    .accordion-header:hover {
+      background: #e8f9f2;
+    }
 
+    .accordion-header span {
+      font-size: 1.8rem;
+      transition: transform 0.3s;
+    }
 
-<!-- CTA -->
-<section id="cta" class="section cta" data-snap>
-<div class="container cta__content">
-<h2 class="h2" data-animate="fadeInUp">Own Your Time</h2>
-<a href="#" class="btn btn--outline-gold" data-animate="fadeInUp" data-delay="0.15">Shop Now</a>
-</div>
-</section>
+    .accordion-item.active .accordion-header span {
+      transform: rotate(45deg);
+    }
 
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      padding: 0 25px;
+    }
 
-</main>
+    .accordion-item.active .accordion-content {
+      max-height: 800px;
+      padding: 25px;
+    }
 
+    .accordion-content p {
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+      color: #444;
+    }
 
-<script defer src="script.js"></script>
+    .accordion-content img {
+      width: 100%;
+      border-radius: 16px;
+      margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* ----- Footer ----- */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
+      color: #555;
+      background: #fff;
+      border-top: 1px solid #eee;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .accordion-header {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="your-logo.png" alt="TimesApp Logo">
+    <h1>TimesApp</h1>
+    <p>Smart. Minimal. Always on time.</p>
+  </header>
+
+  <!-- Content -->
+  <div class="container">
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <h2>1. Design Elegante</h2><span>+</span>
+      </div>
+      <div class="accordion-content">
+        <p>TimesApp nasce con un’interfaccia semplice, elegante e intuitiva, ispirata al minimalismo dei migliori prodotti tech.</p>
+        <img src="img/design.jpg" alt="Design Image">
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <h2>2. Precisione Assoluta</h2><span>+</span>
+      </div>
+      <div class="accordion-content">
+        <p>Ogni secondo conta. Grazie alla sincronizzazione intelligente, TimesApp mantiene sempre l’ora perfetta.</p>
+        <img src="img/precision.jpg" alt="Precision Image">
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <h2>3. Autonomia Estesa</h2><span>+</span>
+      </div>
+      <div class="accordion-content">
+        <p>Progettata per durare: fino a 24 ore di utilizzo continuo e ricarica rapida per essere sempre con te.</p>
+        <img src="img/battery.jpg" alt="Battery Image">
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <h2>4. Funzioni Smart</h2><span>+</span>
+      </div>
+      <div class="accordion-content">
+        <p>TimesApp ti aiuta a gestire il tempo con promemoria intelligenti, sincronizzazione cloud e supporto multi-dispositivo.</p>
+        <img src="img/features.jpg" alt="Features Image">
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <h2>5. Sicurezza & Privacy</h2><span>+</span>
+      </div>
+      <div class="accordion-content">
+        <p>I tuoi dati sono solo tuoi. TimesApp utilizza crittografia end-to-end per proteggere ogni informazione.</p>
+        <img src="img/security.jpg" alt="Security Image">
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <h2>6. Personalizzazione</h2><span>+</span>
+      </div>
+      <div class="accordion-content">
+        <p>Personalizza il tuo stile: scegli temi, colori e sfondi per rendere TimesApp davvero tua.</p>
+        <img src="img/customization.jpg" alt="Customization Image">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 TimesApp. Designed with precision and passion.
+  </footer>
+
+  <script>
+    // Accordion Toggle Script
+    const items = document.querySelectorAll('.accordion-item');
+    items.forEach(item => {
+      item.querySelector('.accordion-header').addEventListener('click', () => {
+        item.classList.toggle('active');
+        items.forEach(other => {
+          if (other !== item) other.classList.remove('active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
